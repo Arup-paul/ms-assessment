@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +29,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-  Route::get('/deposit', [DepositController::class, 'index'])->name('deposit.index');
-  Route::get('/deposit/create', [DepositController::class, 'create'])->name('deposit.create');
-  Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
+    // Deposit
+    Route::get('/deposit', [DepositController::class, 'index'])->name('deposit.index');
+    Route::get('/deposit/create', [DepositController::class, 'create'])->name('deposit.create');
+    Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
+
+     // Withdrawal
+    Route::get('/withdraw', [WithdrawalController::class, 'index'])->name('withdraw.index');
+    Route::get('/withdraw/create', [WithdrawalController::class, 'create'])->name('withdraw.create');
+    Route::post('/withdraw', [WithdrawalController::class, 'store'])->name('withdraw.store');
+
+
 });
 
 require __DIR__.'/auth.php';

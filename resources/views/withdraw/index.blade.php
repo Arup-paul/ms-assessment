@@ -10,8 +10,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="mb-5">
-                        <a href="{{route('deposit.create')}}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 mb-10 p-10 rounded">
-                            Add New Deposit
+                        <a href="{{route('withdraw.create')}}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 mb-10 p-10 rounded">
+                            Withdraw Amount
                         </a>
                     </div>
 
@@ -23,7 +23,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <h1 class="text-xl font-bold mb-4">  Deposit Transaction List</h1>
+                        <h1 class="text-xl font-bold mb-4">  Withdraw Transaction  List</h1>
 
                         <table class="min-w-full">
                             <thead>
@@ -31,19 +31,21 @@
                                 <th class="py-2 text-left">Transaction ID</th>
                                 <th class="py-2 text-left">Date</th>
                                 <th class="py-2 text-left">Amount</th>
+                                <th class="py-2 text-left">Fee</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if(isset($deposits))
-                                @forelse($deposits as $deposit)
+                            @if(isset($withdraws))
+                                @forelse($withdraws as $withdraw)
                                     <tr class="border-b">
-                                        <td class="py-2">{{$deposit->id ?? ''}}</td>
-                                        <td class="py-2">{{$deposit->date ?? ''}}</td>
-                                        <td class="py-2">{{$deposit->amount ?? ''}}</td>
+                                        <td class="py-2">{{$withdraw->id ?? ''}}</td>
+                                        <td class="py-2">{{$withdraw->date ?? ''}}</td>
+                                        <td class="py-2">{{$withdraw->amount ?? ''}}</td>
+                                        <td class="py-2">{{$withdraw->fee ?? ''}}</td>
                                     </tr>
                                 @empty
                                     <tr class="border-b text-center">
-                                        <td class="py-2" colspan="4">No deposits found.</td>
+                                        <td class="py-2" colspan="4">No withdraw found.</td>
                                     </tr>
                                 @endforelse
                            @endif
