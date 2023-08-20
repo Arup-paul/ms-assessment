@@ -16,6 +16,15 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Account Type')" />
+            <select name="account_type" id="account_type" required class="block mt-1 w-full">
+                <option @selected(old('account_type',) == 'Individual') value="Individual">Individual</option>
+                <option @selected(old('account_type',) == 'Business') value="Business">Business</option>
+            </select>
+            <x-input-error :messages="$errors->get('account_type')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
