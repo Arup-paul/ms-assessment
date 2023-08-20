@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('account_type',['Individual','Business'])->default('Individual');
-            $table->double('balance')->default(0);
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->enum('type',['Deposit','Withdrawal']);
+            $table->double('amount');
+            $table->decimal('fee', 8, 2)->default(0);
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('transactions');
     }
 };
