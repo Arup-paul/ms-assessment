@@ -12,10 +12,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('deposit.index')" :active="request()->routeIs('deposit.index')">
+                    <x-nav-link :href="route('deposit.index')" :active="request()->routeIs('deposit.*')">
                         {{ __('Deposit') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('withdraw.index')" :active="request()->routeIs('withdraw.index')">
+                    <x-nav-link :href="route('withdraw.index')" :active="request()->routeIs('withdraw.*')">
                         {{ __('Withdraw') }}
                     </x-nav-link>
                 </div>

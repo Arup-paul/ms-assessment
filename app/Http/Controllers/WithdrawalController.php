@@ -46,7 +46,7 @@ class WithdrawalController extends Controller
                     $individualFeeRate = 0.015;
 
                     if ($withdrawalAmount > $firstFreeAmount) {
-                        $withdrawalFee = ($withdrawalAmount - $firstFreeAmount) * $individualFeeRate;
+                        $withdrawalFee = (($withdrawalAmount - $firstFreeAmount) * $individualFeeRate) / 100;
                     }
 
                     // 5k free withdrawal limit per month
@@ -63,7 +63,9 @@ class WithdrawalController extends Controller
                     }
 
                     if ($withdrawalAmount > $remainingFreeAmount) {
-                        $withdrawalFee = ($withdrawalAmount - $remainingFreeAmount) * $individualFeeRate;
+                        $withdrawalAmount = $withdrawalAmount - ($remainingFreeAmount + $firstFreeAmount);
+
+                        $withdrawalFee = ($withdrawalAmount * $individualFeeRate) / 100;
                     } else{
                         $withdrawalFee = 0;
                     }
@@ -80,7 +82,7 @@ class WithdrawalController extends Controller
                         $businessFeeRate = 0.015;
                     }
 
-                    $withdrawalFee = $withdrawalAmount * $businessFeeRate;
+                    $withdrawalFee = ($withdrawalAmount * $businessFeeRate) / 100;
                 }
 
 

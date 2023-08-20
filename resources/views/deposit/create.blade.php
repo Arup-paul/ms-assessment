@@ -23,7 +23,7 @@
 
 
                             <div class="mb-4">
-                                <label class="text-xl text-gray-600 dark:text-gray-200">Amount</label><br>
+                                <label class="text-xl text-black">Amount</label><br>
                                 <input type="number" name="amount" class="border-2 border-gray-300 p-2 w-full" value="{{old('amount')}}">
                                 @error('amount')
                                 <div class="text-red-500 mt-2 text-sm">
