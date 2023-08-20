@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TransactionType;
-use App\Http\Requests\DepositRequest;
+use App\Http\Requests\TransactionRequest;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,11 +28,12 @@ class DepositController extends Controller
         return view('deposit.create');
     }
 
-    public function store(DepositRequest $request){
+    public function store(TransactionRequest $request){
         try {
             return DB::transaction(function () use ($request) {
                 $data = $request->validated();
                 $data['user_id'] = auth()->id();
+                $data['date'] = now()->format('Y-m-d');
                 $data['type'] = TransactionType::DEPOSIT;
                 $data['fee'] = 0;
 

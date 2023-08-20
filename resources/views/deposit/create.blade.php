@@ -20,15 +20,7 @@
                         <h1 class="text-xl font-bold mb-4">Add New Deposit</h1>
                         <form action="{{route('deposit.store')}}" method="POST">
                             @csrf
-                            <div class="mb-4">
-                                <label class="text-xl text-black  ">Date</label><br>
-                                <input type="date" name="date" class="border-2 border-gray-300 p-2 w-full" value="{{old('date')}}">
-                                @error('date')
-                                <div class="text-red-500 mt-2 text-sm">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                            </div>
+
 
                             <div class="mb-4">
                                 <label class="text-xl text-gray-600 dark:text-gray-200">Amount</label><br>
