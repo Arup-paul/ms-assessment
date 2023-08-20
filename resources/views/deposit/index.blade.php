@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="mb-5">
-                        <a class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 mb-10 p-10 rounded">
+                        <a href="{{route('deposit.create')}}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 mb-10 p-10 rounded">
                             Add New Deposit
                         </a>
                     </div>
@@ -18,6 +18,13 @@
 
 
                     <div class="bg-white text-black rounded-lg shadow-md p-4">
+                        @if(session('success'))
+                            <div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
+                                {{session('success')}}
+                            </div>
+                        @endif
+                        <h1 class="text-xl font-bold mb-4">  Deposit List</h1>
+
                         <table class="min-w-full">
                             <thead>
                             <tr class="border-b">
